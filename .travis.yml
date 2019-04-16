@@ -1,0 +1,18 @@
+branches:
+  only:
+  - master
+
+services:
+  - docker
+
+before_script:
+  docker login -u "$DOCKER_LOGIN" -p "$DOCKER_PASS" git.freshcode.org:4567
+
+jobs:
+  include:
+  - stage: build
+    script: docker build -t git.freshcode.org:4567/internal/auto-devops-test-2:travis .
+  - stage: push
+    script: docker push git.freshcode.org:4567/internal/auto-devops-test-2:travis
+
+
