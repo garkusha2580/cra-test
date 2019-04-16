@@ -11,7 +11,6 @@ before_script:
 jobs:
   include:
   - stage: build
-    script: docker build -t git.freshcode.org:4567/internal/auto-devops-test-2:travis . && \
-          docker push git.freshcode.org:4567/internal/auto-devops-test-2:travis
-
-
+    script:
+    - docker build -t git.freshcode.org:4567/internal/auto-devops-test-2:travis .
+    - docker push git.freshcode.org:4567/internal/auto-devops-test-2:travis
